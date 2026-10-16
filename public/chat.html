@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat - Paimon</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <nav class="menu">
+        <a href="index.html" class="link-menu">Home</a>
+        <a href="galeria.html" class="link-menu">Galeria</a>
+        <a href="chat.html" class="link-menu">Chat</a>
+        <a href="cadastro.html" class="link-menu">Cadastro</a>
+        <a href="login.html" class="link-menu">Login</a>
+    </nav>
+
+    <div class="chatContainer">
+
+        <h2 id="boasVindas">Seja bem-vindo ao Chat</h2>
+
+        <div id="caixaChat">
+            <p class="msg">
+                Paimon: Olá! Me chamo Paimon! Fui criada pelos arcontes de Khaenri'ah como uma companhia.
+            </p>
+        </div>
+
+        <div id="inputArea">
+            <input
+                type="text"
+                id="mensagem"
+                placeholder="Digite sua mensagem..."
+                autocomplete="off"
+            >
+
+            <button id="btnEnviar" type="button">Enviar</button>
+        </div>
+
+    </div>
+
+    <footer>
+        &copy; Desenvolvido por Laisa - 2026 Curitiba
+    </footer>
+
+    <script>
+        const usuarioLogado = 'Jose';
+
+        document.querySelector('#boasVindas').textContent =
+            `Olá ${usuarioLogado}, seja bem-vindo!`;
+
+        const caixaChat = document.querySelector('#caixaChat');
+        const inputMensagem = document.querySelector('#mensagem');
+        const btnEnviar = document.querySelector('#btnEnviar');
+
+        const historicoConversa = [];
+
+        function mensagemTela(autor, texto) {
+            const textoFinal = document.createElement('p');
+
+            textoFinal.className = 'msg';
+            textoFinal.textContent = `${autor}: ${texto}`;
+
+            caixaChat.appendChild(textoFinal);
+
+            // Mantém a conversa rolando até a mensagem mais recente
+            caixaChat.scrollTop = caixaChat.scrollHeight;
+        }
+
+        async function enviarMensagem() {
+            const textoMensagem = inputMensagem.value.trim();
+
+            if (!textoMensagem || btnEnviar.disabled) {
+                return;
+            }
+
+            mensagemTela(usuarioLogado, textoMensagem);
+
+            historicoConversa.push({
+                role: 'user',
+                content: textoMensagem
+            });
+
+            inputMensagem.value = '';
+            btnEnviar.disabled = true;
+
+            try {
+                const respostaServidor = await fetch('/chat', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        historico: historicoConversa
+                    })
+                });
+
+                const dados = await respostaServidor.json();
+
+                if (!respostaServidor.ok) {
+                    mensagemTela(
+                        'Sistema',
+                        dados.erro || 'Não foi possível obter uma resposta.'
+                    );
+                    return;
+                }
+
+                mensagemTela('Paimon', dados.resposta);
+
+                historicoConversa.push({
+                    role: 'assistant',
+                    content: dados.resposta
+                });
+
+            } catch (erro) {
+                mensagemTela(
+                    'Sistema',
+                    'Erro ao conectar com o servidor.'
+                );
+
+                console.error('Erro no chat:', erro);
+
+            } finally {
+                btnEnviar.disabled = false;
+                inputMensagem.focus();
+            }
+        }
+
+        btnEnviar.addEventListener('click', enviarMensagem);
+
+        inputMensagem.addEventListener('keydown', (evento) => {
+            if (evento.key === 'Enter') {
+                evento.preventDefault();
+                enviarMensagem();
+            }
+        });
+    </script>
+
+</body>
+</html>

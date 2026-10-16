@@ -1,0 +1,1009 @@
+@import url('https://fonts.googleapis.com/css2?family=Montenegrin+Gothic+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --fundocinema: #230b43; 
+    --fundocard: #2d2d68; 
+    --botaos: #b29ee7; 
+    --brilho: #766a97; 
+    --menu-bg: rgba(60, 34, 119, 0.897);
+}
+
+body {
+    background-color: var(--fundocinema);
+    color: #ffffff;
+    font-family: 'Roboto', sans-serif;
+}
+
+.menu {
+    position: sticky;
+    top: 0;
+    padding: 20px;
+    background-color: var(--menu-bg);
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+.link-menu {
+    text-decoration: none;
+    font-family: "Montenegrin Gothic One", serif;
+  font-weight: 400;
+  font-style: normal;
+    font-size: 1.8rem;
+    letter-spacing: 2px;
+    color: #ac9fe2;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.link-menu:hover {
+    color: rgb(255, 255, 255);
+    transform: scale(1.1);
+    text-shadow: 0 0 10px var(--brilho);
+}
+
+.txt{
+  margin-top: -15px;
+   font-family: "Jost", sans-serif;
+   font-optical-sizing: auto;
+   font-weight: 400;
+   font-style: normal;
+   
+}
+.hero-deadpool {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 40px;
+    background: linear-gradient(180deg, var(--menu-bg) 0%, var(--fundocinema) 100%);
+    min-height: 70vh;
+}
+
+.esquerdo, .direito {
+    flex: 1;
+    padding: 20px;
+    max-width: 400px;
+}
+
+.hero-titulo {
+    font-family: "Montenegrin Gothic One", serif;
+  font-weight: 400;
+  font-style: normal;
+    font-size: 5rem;
+    color: rgb(156, 137, 175);
+    letter-spacing: 5px;
+    text-shadow: 3px 3px 0px var(--fundocard);
+}
+
+.hero-subtitulo {
+  font-family: "Jost", sans-serif;
+   font-optical-sizing: auto;
+   font-weight: 450;
+   font-style: normal;
+    font-size: 1.2rem;
+    margin-top: 15px;
+    line-height: 1.5;
+}
+
+.deadpool-front {      
+   filter: drop-shadow(0px 10px 10px rgba(244, 243, 248, 0.2)); 
+    max-height: 550px;
+    object-fit: contain;
+    animation: flutuar 3s ease-in-out infinite;
+}
+
+@keyframes flutuar {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+.bloco-balao {
+   font-family: "Jost", sans-serif;
+   font-optical-sizing: auto;
+   font-weight: 450;
+   font-style: normal;
+    background: var(--fundocard);
+    border: 3px solid var(--botaos);
+    padding: 20px;
+    border-radius: 20px;
+    position: relative;
+    margin-bottom: 25px;
+}
+
+.btn-principal {
+  font-family: "Jost", sans-serif;
+   font-optical-sizing: auto;
+   font-weight: 450;
+   font-style: normal;
+    display: inline-block;
+    background-color: var(--botaos);
+    color: #0c0c24;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 15px 30px;
+    border-radius: 30px;
+    text-align: center;
+    font-size: 1.2rem;
+    transition: 0.3s ease;
+}
+
+.btn-principal:hover {
+    background-color: var(--brilho);
+    transform: scale(1.05);
+}
+
+/* PERFIL BOTTOM */
+.container-principal {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.secao-perfil {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    background: var(--fundocard);
+    padding: 30px;
+    border-radius: 15px;
+    border: 2px solid var(--botaos);
+}
+
+.perfil-foto {
+    width: 250px;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 3px solid var(--botaos);
+}
+
+.perfil-texto h2 {
+font-family: "Montenegrin Gothic One", serif;
+  font-weight: 400;
+  font-style: normal;
+    font-size: 2.5rem;
+    color: var(--botaos);
+    margin-bottom: 15px;
+}
+
+.perfil-texto p {
+   font-family: "Jost", sans-serif;
+   font-optical-sizing: auto;
+   font-weight: 450;
+   font-style: normal;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+/*VITRINE GALERIA*/
+.vitrine {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    max-width: 1200px;
+    padding: 60px 20px;
+    gap: 20px;
+    margin: auto;
+}
+
+.heroi {
+    border: 3px solid var(--botaos);
+    padding: 25px;
+    border-radius: 12px;
+    background-color: var(--fundocard);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 15px;
+    height: 400px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.heroi:hover {
+      transform: translateY(-10px);
+    border-color: var(--brilho);
+    box-shadow: 0 12px 25px rgba(104, 75, 185, 0.5);
+}
+.heroi:hover .foto-heroi {
+    border-color: var(--brilho);
+}
+
+.foto-heroi {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border: 3px solid var(--botaos);
+    border-radius: 12px;
+    transition: border-color 0.3s ease;
+
+}
+
+.titulo {
+  font-family: "Montenegrin Gothic One", serif;
+  font-weight: 400;
+  font-style: normal;
+    letter-spacing: 3px;
+    font-size: 2rem;
+    color: var(--botaos);
+    text-align: center;
+}
+
+.botao {
+    font-family: "Montenegrin Gothic One", serif;
+   font-weight: 400;
+   font-style: normal;
+    background-color: var(--botaos);
+    border: none;
+    padding: 12px;
+    border-radius: 10px;
+    color: rgb(25, 10, 59);
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.botao:hover {
+    background-color: var(--brilho);
+    color: #19072e;
+}
+
+/* CHAT AREA */
+
+.chatContainer {
+    max-width: 600px;
+    margin: 40px auto;
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--fundocard);
+    border-radius: 15px;
+    border: 3px solid var(--botaos);
+    overflow: hidden;
+}
+
+#boasVindas {
+    padding: 15px 20px;
+    margin: 0;
+    text-align: center;
+    font-family: "Jost", sans-serif;
+}
+
+
+#caixaChat {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 10px;
+}
+
+
+.msg {
+    font-family: "Jost", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+
+    max-width: 80%;
+    padding: 15px;
+    border-radius: 15px;
+    font-size: 1rem;
+    line-height: 1.4;
+
+    background-color: var(--fundocinema);
+    border: 2px solid var(--botaos);
+    margin: 0;
+
+    align-self: flex-start;
+    overflow-wrap: anywhere;
+}
+
+
+#inputArea {
+    display: flex;
+    padding: 20px;
+    background-color: var(--fundocinema);
+    gap: 10px;
+}
+
+
+#inputArea input {
+    flex: 1;
+    min-width: 0;
+    padding: 12px;
+    border-radius: 8px;
+    border: 2px solid var(--botaos);
+    background-color: var(--fundocard);
+    color: #fff;
+    font-family: "Jost", sans-serif;
+    font-size: 1rem;
+    outline: none;
+}
+
+
+#inputArea input:focus {
+    border-color: var(--brilho);
+}
+
+
+#inputArea button {
+    background-color: var(--botaos);
+    color: #0c0c24;
+    border: none;
+    padding: 0 25px;
+    font-family: "Jost", sans-serif;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+
+#inputArea button:hover {
+    background-color: var(--brilho);
+}
+
+
+#inputArea button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+
+footer {
+    text-align: center;
+    padding: 20px;
+    color: #ac9fe2;
+    font-size: 0.9rem;
+}
+
+/* AJUSTE PARA CELULAR */
+@media (max-width: 650px) {
+    .chatContainer {
+        width: calc(100% - 30px);
+        max-width: none;
+        height: 70vh;
+        margin: 25px auto;
+    }
+
+    #inputArea {
+        padding: 12px;
+        gap: 8px;
+    }
+
+    #inputArea input {
+        width: 100%;
+    }
+
+    #inputArea button {
+        padding: 0 15px;
+    }
+
+    .msg {
+        max-width: 90%;
+    }
+}
+
+/* CADASTRO */
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.cadastro {
+    font-family: "Montenegrin Gothic One", serif;
+    font-style: normal;
+    font-size: 20px;
+    color: rgb(156, 137, 175);
+    letter-spacing: 5px;
+    text-align: center;
+
+}
+
+.box-cadastro {
+    width: 700px;
+    margin: 48px auto;
+    padding: 15px;
+    border: 4px solid rgb(156, 137, 175);
+    border-radius: 30px;
+    box-shadow: 0 0 15px rgba(173, 143, 207, 0.4);
+    box-sizing: border-box;
+}
+
+.cadastro h1 {
+    font-weight: 400;
+    padding: 20px;
+    text-align: center;
+}
+
+
+.cadastro input {
+    font-family: "Jost", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    border: 2px solid #19072e;
+    border-radius: 30px;
+    width: 500px;
+    padding: 13px;
+    margin: 1px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+
+
+.cadastro button {
+    background-color: #c2aafd;
+    font-family: "Montenegrin Gothic One", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 20px;
+    color: rgb(55, 16, 94);
+    letter-spacing: 5px;
+    border: 2px solid #19072e;
+    border-radius: 30px;
+    width: 400px;
+    padding: 15px;
+    margin: 10px auto 25px auto;
+    cursor: pointer;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+
+
+.cadastro button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px var(--brilho);
+    background-color: #ae8eff;
+}
+
+
+.cadastro #resposta {
+    text-align: center;
+    font-family: "Jost", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 15px;
+    letter-spacing: 1px;
+}
+
+/* CADASTRO */
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.cadastro {
+    font-family: "Montenegrin Gothic One", serif;
+    font-style: normal;
+    font-size: 20px;
+    color: rgb(156, 137, 175);
+    letter-spacing: 5px;
+    text-align: center;
+
+}
+
+.box-cadastro {
+    width: 700px;
+    margin: 48px auto;
+    padding: 15px;
+    border: 4px solid rgb(156, 137, 175);
+    border-radius: 30px;
+    box-shadow: 0 0 15px rgba(173, 143, 207, 0.4);
+    box-sizing: border-box;
+}
+
+.cadastro h1 {
+    font-weight: 400;
+    padding: 20px;
+    text-align: center;
+}
+
+
+.cadastro input {
+    font-family: "Jost", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    border: 2px solid #19072e;
+    border-radius: 30px;
+    width: 500px;
+    padding: 13px;
+    margin: 1px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+
+
+.cadastro button {
+    background-color: #c2aafd;
+    font-family: "Montenegrin Gothic One", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 20px;
+    color: rgb(55, 16, 94);
+    letter-spacing: 5px;
+    border: 2px solid #19072e;
+    border-radius: 30px;
+    width: 400px;
+    padding: 15px;
+    margin: 10px auto 25px auto;
+    cursor: pointer;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+
+
+.cadastro button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px var(--brilho);
+    background-color: #ae8eff;
+}
+
+
+.cadastro #resposta {
+    text-align: center;
+    font-family: "Jost", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 15px;
+    letter-spacing: 1px;
+}
+
+/*LOGIN */
+.login-page {
+    font-family: "Montenegrin Gothic One", serif;
+    font-style: normal;
+    font-size: 20px;
+    color: rgb(156, 137, 175);
+    letter-spacing: 5px;
+    text-align: center;
+}
+
+.box-login {
+    width: 700px;
+    margin: 48px auto;
+    padding: 15px;
+    border: 4px solid rgb(156, 137, 175);
+    border-radius: 30px;
+    box-shadow: 0 0 15px rgba(173, 143, 207, 0.4);
+    box-sizing: border-box;
+}
+
+.box-login h1 {
+    font-weight: 400;
+    padding: 20px;
+    text-align: center;
+}
+
+.box-login input {
+    
+  font-family: "Jost", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    border: 2px solid #19072e;
+    border-radius: 30px;
+    width: 500px;
+    padding: 13px;
+    margin: 1px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.box-login button {
+    background-color: #c2aafd;
+    font-family: "Montenegrin Gothic One", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 20px;
+    color: rgb(55, 16, 94);
+    letter-spacing: 5px;
+    border: 2px solid #19072e;
+    border-radius: 30px;
+    width: 400px;
+    padding: 15px;
+    margin: 10px auto 25px auto;
+    cursor: pointer;
+    transition: transform 0.3s ease, color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.box-login button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px var(--brilho);
+    background-color: #ae8eff;
+}
+
+.box-login #loginMensagem {
+    text-align: center;
+    font-family: "Jost", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 15px;
+    letter-spacing: 1px;
+}
+
+
+
+/* ================================
+   RESPONSIVIDADE DO PROJETO PAIMON
+================================ */
+
+/* Evita que elementos ultrapassem a tela */
+html {
+    width: 100%;
+    overflow-x: clip;
+}
+
+body {
+    min-width: 0;
+    min-height: 100vh;
+}
+
+img {
+    max-width: 100%;
+}
+
+/* Tablets e telas menores */
+@media (max-width: 768px) {
+
+    /* MENU */
+    .menu {
+        position: sticky;
+        top: 0;
+        padding: 15px 10px;
+        gap: 12px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .link-menu {
+        font-size: 1.2rem;
+        letter-spacing: 1px;
+    }
+
+    /* PÁGINA INICIAL */
+    .hero-deadpool {
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        padding: 30px 18px;
+        gap: 20px;
+        min-height: auto;
+    }
+
+    .esquerdo,
+    .direito {
+        width: 100%;
+        max-width: 100%;
+        padding: 10px;
+        flex: auto;
+    }
+
+    .hero-titulo {
+        font-size: clamp(2.5rem, 10vw, 4rem);
+        letter-spacing: 3px;
+    }
+
+    .hero-subtitulo {
+        font-size: 1rem;
+    }
+
+    .deadpool-front {
+        width: 100%;
+        max-width: 320px;
+        max-height: 380px;
+        object-fit: contain;
+    }
+
+    .bloco-balao {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .btn-principal {
+        max-width: 100%;
+        padding: 13px 20px;
+        font-size: 1rem;
+    }
+
+    /* PERFIL DA PAIMON */
+    .container-principal {
+        width: 100%;
+        max-width: 100%;
+        margin: 25px auto;
+        padding: 0 15px;
+    }
+
+    .secao-perfil {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .perfil-moldura {
+        max-width: 100%;
+    }
+
+    .perfil-foto {
+        display: block;
+        width: 100%;
+        max-width: 250px;
+        height: auto;
+        margin: 0 auto;
+        object-fit: cover;
+    }
+
+    .perfil-texto {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .perfil-texto h2 {
+        font-size: clamp(1.7rem, 6vw, 2.3rem);
+        overflow-wrap: anywhere;
+    }
+
+    .perfil-texto p {
+        font-size: 1rem;
+        overflow-wrap: anywhere;
+    }
+
+    /* GALERIA */
+    .vitrine {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        width: 100%;
+        padding: 25px 15px;
+        gap: 15px;
+    }
+
+    .heroi {
+        min-width: 0;
+        height: auto;
+        min-height: 350px;
+        padding: 15px;
+        gap: 12px;
+    }
+
+    .foto-heroi {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+    }
+
+    .titulo {
+        font-size: 1.6rem;
+        letter-spacing: 1px;
+        overflow-wrap: anywhere;
+    }
+
+    .txt {
+        margin-top: 0;
+        overflow-wrap: anywhere;
+    }
+
+    .botao {
+        width: 100%;
+        padding: 10px 5px;
+        font-size: 0.9rem;
+    }
+
+    /* CHAT */
+    .chatContainer {
+        width: calc(100% - 30px);
+        max-width: 600px;
+        height: 70vh;
+        min-height: 380px;
+        margin: 25px auto;
+    }
+
+    #boasVindas {
+        padding: 15px 10px;
+        font-size: 1.2rem;
+        overflow-wrap: anywhere;
+    }
+
+    #caixaChat {
+        min-width: 0;
+        padding: 12px;
+    }
+
+    .msg {
+        max-width: 95%;
+        overflow-wrap: anywhere;
+    }
+
+    #inputArea {
+        padding: 12px;
+        gap: 8px;
+    }
+
+    #inputArea input {
+        width: 100%;
+        min-width: 0;
+    }
+
+    #inputArea button {
+        flex-shrink: 0;
+        padding: 0 15px;
+    }
+
+    /* CADASTRO E LOGIN */
+    .box-cadastro,
+    .box-login {
+        width: calc(100% - 30px);
+        max-width: 500px;
+        margin: 30px auto;
+        padding: 20px 15px;
+        letter-spacing: 2px;
+    }
+
+    .cadastro,
+    .login-page {
+        font-size: 16px;
+        letter-spacing: 2px;
+    }
+
+    .box-cadastro h1,
+    .box-login h1 {
+        padding: 15px 5px;
+        font-size: 2rem;
+    }
+
+    .cadastro input,
+    .box-login input {
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        margin: 8px auto;
+        padding: 13px 10px;
+        letter-spacing: normal;
+    }
+
+    .cadastro button,
+    .box-login button {
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        margin: 15px auto;
+        padding: 13px 8px;
+        font-size: 1rem;
+        letter-spacing: 2px;
+    }
+
+    .cadastro #resposta,
+    .box-login #loginMensagem {
+        overflow-wrap: anywhere;
+    }
+
+    /* RODAPÉ */
+    footer {
+        padding: 18px 12px;
+        overflow-wrap: anywhere;
+    }
+}
+
+/* Celulares pequenos */
+@media (max-width: 480px) {
+
+    .menu {
+        gap: 8px 12px;
+        padding: 12px 8px;
+    }
+
+    .link-menu {
+        font-size: 1rem;
+        letter-spacing: 0;
+    }
+
+    .hero-deadpool {
+        padding: 20px 12px;
+    }
+
+    .hero-titulo {
+        font-size: 2.5rem;
+        letter-spacing: 2px;
+    }
+
+    .deadpool-front {
+        max-width: 260px;
+        max-height: 320px;
+    }
+
+    .secao-perfil {
+        padding: 15px;
+    }
+
+    /* Um card por linha */
+    .vitrine {
+        grid-template-columns: minmax(0, 1fr);
+        padding: 20px 15px;
+        gap: 20px;
+    }
+
+    .heroi {
+        width: 100%;
+        min-height: 0;
+        padding: 20px;
+    }
+
+    .foto-heroi {
+        height: 180px;
+    }
+
+    .titulo {
+        font-size: 1.8rem;
+    }
+
+    .chatContainer {
+        width: calc(100% - 20px);
+        margin: 15px auto;
+        min-height: 350px;
+        height: 65vh;
+    }
+
+    #boasVindas {
+        font-size: 1.05rem;
+    }
+
+    #caixaChat {
+        padding: 10px;
+    }
+
+    .msg {
+        max-width: 100%;
+        padding: 10px;
+        font-size: 0.95rem;
+    }
+
+    #inputArea {
+        padding: 8px;
+        gap: 6px;
+    }
+
+    #inputArea input {
+        padding: 10px 8px;
+        font-size: 0.9rem;
+    }
+
+    #inputArea button {
+        padding: 0 10px;
+        font-size: 0.9rem;
+    }
+
+    .box-cadastro,
+    .box-login {
+        width: calc(100% - 20px);
+        margin: 20px auto;
+        padding: 18px 12px;
+        border-radius: 20px;
+    }
+
+    .cadastro,
+    .login-page {
+        font-size: 14px;
+        letter-spacing: 1px;
+    }
+
+    .cadastro h1,
+    .box-login h1 {
+        font-size: 1.7rem;
+    }
+
+    footer {
+        font-size: 0.8rem;
+    }
+}
