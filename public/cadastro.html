@@ -40,69 +40,59 @@
 
     <script>
         async function validarDados() {
-    const usuarioEntrada = document.querySelector('#usuario');
-    const emailEntrada = document.querySelector('#email');
-    const senhaEntrada = document.querySelector('#senha');
-    const resposta = document.querySelector('#resposta');
+            const usuarioEntrada = document.querySelector('#usuario');
+            const emailEntrada = document.querySelector('#email');
+            const senhaEntrada = document.querySelector('#senha');
+            const resposta = document.querySelector('#resposta');
 
-    const usuarioDigitado = usuarioEntrada.value;
-    const emailDigitado = emailEntrada.value;
-    const senhaDigitada = senhaEntrada.value;
+            const usuarioDigitado = usuarioEntrada.value;
+            const emailDigitado = emailEntrada.value;
+            const senhaDigitada = senhaEntrada.value;
 
-    if (!usuarioDigitado || !emailDigitado || !senhaDigitada) {
-        resposta.innerText = 'Preencha todos os campos antes de enviar!';
-        resposta.style.color = 'red';
-        return;
-    }
+            if (!usuarioDigitado || !emailDigitado || !senhaDigitada) {
+                resposta.innerText = 'Preencha todos os campos antes de enviar!';
+                resposta.style.color = 'red';
+                return;
+            }
 
-    resposta.innerText = 'Aguarde, cadastrando no servidor...';
-    resposta.style.color = 'orange';
+            resposta.innerText = 'Aguarde, cadastrando no servidor...';
+            resposta.style.color = 'orange';
 
-    try {
-        const respostaBe = await fetch('https://outubro.onrender.com/cadastro.html', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                usuario: usuarioDigitado,
-                email: emailDigitado,
-                senha: senhaDigitada
-            })
-        });
+            try {
+                const respostaBe = await fetch('https://outubro.onrender.com/cadastro.html', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        usuario: usuarioDigitado,
+                        email: emailDigitado,
+                        senha: senhaDigitada
+                    })
+                });
 
-    
-        const contentType = respostaBe.headers.get("content-type");
-        let dados;
+                const dados = await respostaBe.json();
 
-        if (contentType && contentType.includes("application/json")) {
-            dados = await respostaBe.json();
-        } else {
-            
-            const textoErro = await respostaBe.text();
-            console.error("O servidor não respondeu JSON. Resposta:", textoErro);
-            resposta.innerText = 'O servidor retornou um formato inválido!';
-            resposta.style.color = 'red';
-            return;
+                if (!respostaBe.ok) {
+                    resposta.innerText = dados.erro;
+                    resposta.style.color = 'red';
+                    return;
+                }
+
+                resposta.innerText = `${dados.mensagem}: ${dados.usuario}`;
+                resposta.style.color = 'green';
+
+                usuarioEntrada.value = '';
+                emailEntrada.value = '';
+                senhaEntrada.value = '';
+
+            } catch (erro) {
+                console.error('Erro na requisição:', erro);
+                resposta.innerText = 'Erro ao conectar com o servidor!!';
+                resposta.style.color = 'red';
+            }
         }
+    </script>
 
-        if (!respostaBe.ok) {
-            resposta.innerText = dados.erro || 'Erro ao processar cadastro.';
-            resposta.style.color = 'red';
-            return;
-        }
-
-        resposta.innerText = dados.mensagem || 'Cadastro realizado com sucesso!';
-        resposta.style.color = 'green';
-
-        usuarioEntrada.value = '';
-        emailEntrada.value = '';
-        senhaEntrada.value = '';
-
-    } catch (erro) {
-        console.error('Erro na requisição:', erro);
-        resposta.innerText = 'Erro ao conectar com o servidor!!';
-        resposta.style.color = 'red';
-    }
-}
-</script>
+</body>
+</html>

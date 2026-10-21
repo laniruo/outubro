@@ -65,29 +65,16 @@
                     })
                 });
 
-               
-                const contentType = respostaBe.headers.get("content-type");
-                let dados;
-
-                if (contentType && contentType.includes("application/json")) {
-                    dados = await respostaBe.json();
-                } else {
-                    
-                    const textoErro = await respostaBe.text();
-                    console.error("O servidor não respondeu JSON. Resposta:", textoErro);
-                    loginMensagem.innerText = 'O servidor retornou um formato inválido!';
-                    loginMensagem.style.color = 'red';
-                    return;
-                }
+                const dados = await respostaBe.json();
 
                 if (!respostaBe.ok) {
-                    loginMensagem.innerText = dados.erro || 'Erro ao realizar login.';
+                    loginMensagem.innerText = dados.erro;
                     loginMensagem.style.color = 'red';
                     return;
                 }
 
-               
-                loginMensagem.innerText = `${dados.mensagem || 'Login bem-sucedido!'} Conta: ${dados.usuario || ''}`;
+                
+                loginMensagem.innerText = `${dados.mensagem} Conta: ${dados.usuario}`;
                 loginMensagem.style.color = 'green';
 
                 emailEntrada.value = '';
