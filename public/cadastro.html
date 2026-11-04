@@ -14,10 +14,23 @@
     <nav class="menu">
         <a href="index.html" class="link-menu">Home</a>
         <a href="galeria.html" class="link-menu">galeria</a>
-        <a href="chat.html" class="link-menu">Chat</a>
+        <a href="chat.html" class="link-menu" id="linkChat">Chat</a>
         <a href="cadastro.html" class="link-menu">cadastro</a>
         <a href="login.html" class="link-menu">login</a>
     </nav>
+
+    <script>
+    const linkChat = document.querySelector('#linkChat');
+
+    linkChat.addEventListener('click', function(event) {
+        const usuarioLogado = localStorage.getItem('usuarioLogado');
+
+        if (!usuarioLogado) {
+            event.preventDefault();
+            window.location.href = 'cadastro.html';
+        }
+    });
+</script>
 
     <div class="box-cadastro">
 
@@ -38,6 +51,7 @@
 
     </div>
 
+   
     <script>
         async function validarDados() {
             const usuarioEntrada = document.querySelector('#usuario');
@@ -81,6 +95,7 @@
 
                 resposta.innerText = `${dados.mensagem}`;
                 resposta.style.color = 'green';
+                localStorage.setItem('usuarioLogado', dados.usuario);
 
                 usuarioEntrada.value = '';
                 emailEntrada.value = '';
@@ -97,6 +112,10 @@
             }
         }
     </script>
+
+<footer>
+        &copy; Desenvolvido por Laisa - 2026 Curitiba
+    </footer>
 
 </body>
 </html>
